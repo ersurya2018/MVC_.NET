@@ -1,0 +1,179 @@
+============================HomeController.cs==============
+using surya_mvc_task.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace surya_mvc_task.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            //Employee obj = new Employee();
+            //obj.id = 1001;
+            //obj.name = "Prabhaker";
+            //obj.salary = 50000;
+            //obj.jobtital = "HR";
+
+
+            //ViewBag
+            ViewBag.id = 1001;
+            ViewBag.name = "coder";
+            ViewBag.salary = 15000;
+            ViewBag.date=DateTime.Now;
+            ViewBag.list = new List<string>()
+            {
+                "Jaunpur","Bhadohi","Mirzapur"
+            };
+
+
+
+            //viewdata
+            ViewData["id"] = 1001;
+            ViewData["name"] = "mohan";
+            ViewData["salary"] = 1234567;
+            ViewData["date"]=DateTime.Now;
+            ViewData["list"] = new List<string>()
+            {
+                "gaziyabad",
+                "hathras",
+                "mau"
+            };
+
+            //tempdata
+            TempData["id"] = 1001;
+            TempData["name"] = "sohan";
+            TempData["salary"] = 12345;
+            TempData["data"]=DateTime.Now;
+            TempData["list"] = new List<string>()
+            {
+                "mohan",
+                "jaha",
+                "hai"
+
+            };
+            Session["name"] = "my name is master";
+            
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+
+        }
+    }
+}
+
+===========================Models/Employee.cs============================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace surya_mvc_task.Models
+{
+    //public class Employee
+    //{
+    //    public int id { get; set; }
+    //    public string name { get; set; }
+    //    public int salary { get; set; }
+    //    public string jobtital { get; set; }
+    //}
+}
+=============================views===============================
+==========================Home/Index=============================
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@*@model surya_mvc_task.Models.Employee
+<h1>This is Employee data</h1>
+    @Html.TextBoxFor(m => m.id)
+    @Html.TextBoxFor(m => m.name)
+    @Html.TextBoxFor(m => m.salary)
+    @Html.TextBoxFor(m => m.jobtital)*@
+
+<h1>===========ViewBag data=============</h1>
+<h1>Your id=@ViewBag.id</h1>
+<h1>Name=@ViewBag.name</h1>
+<h1>Salary=@ViewBag.salary</h1>
+<h1>Date=@ViewBag.date</h1>
+
+<ul>
+    @foreach(var item in ViewBag.list)
+            {
+                <li>@item</li>
+            }
+</ul>
+
+<h1>=============ViewData================</h1>
+<h2>Your id=@ViewData["id"]</h2>
+<h2>Name=@ViewData["name"]</h2>
+<h2>Salary=@ViewData["salary"]</h2>
+<h2>Date=@ViewData["date"]</h2>
+
+<ol>
+    @foreach(var item1 in (List<string>)ViewData["list"])
+            {
+                <li>@item1</li>
+            }
+</ol>
+    
+<h1>===========TempData=================</h1>
+<h3>Your Id=@TempData["id"]</h3>
+<h3>Your Name=@TempData["name"]</h3>
+<h3>Your Salary=@TempData["salary"]</h3>
+<h3>Your data=@TempData["data"]</h3>
+
+<ol>
+    @foreach(var items in (List<string>)TempData["list"])
+            {
+                <li>@items</li>
+            }
+</ol>
+
+<h1>============This is Session===========</h1>
+<h3>@Session["name"]</h3>
+
+
+****************************************Home/about******************************
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+
+**************************************Home/contact******************************
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
