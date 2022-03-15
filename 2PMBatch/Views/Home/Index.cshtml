@@ -1,0 +1,28 @@
+﻿@model List<_2PMBatch.DB_connect_EF.tbl_reg>
+
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>MOBILE</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+
+
+
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.id</td>
+    <td>@item.name</td>
+    <td>@item.email</td>
+    <td>@item.mobile</td>
+    <td><button class="btn btn-danger" type="button">Delete</button></td>
+    <td><button class="btn btn-success " type="button">Edit</button></td>
+</tr>
+    }
+   </table>   
